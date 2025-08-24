@@ -1,14 +1,28 @@
+/* 梵高风格色彩系统 */
+:root {
+    --vangogh-yellow: #f9d749;
+    --vangogh-blue: #1e528e;
+    --vangogh-dark-blue: #0b2b5b;
+    --vangogh-orange: #f18c31;
+    --vangogh-green: #487d55;
+    --vangogh-stroke: rgba(0, 0, 0, 0.3);
+}
+
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: #0f1622;
-    color: white;
+    /* 梵高星空风格背景 */
+    background-color: var(--vangogh-dark-blue);
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(249, 215, 73, 0.15) 1px, transparent 3px),
+        radial-gradient(circle at 80% 60%, rgba(30, 82, 142, 0.2) 2px, transparent 4px);
+    color: #f5f5f5;
     padding-top: 37px;
 }
 
-/* Critical header and navigation styles */
+/* 保留原有布局结构的同时添加梵高风格笔触边框 */
 .player-header {
     position: relative;
     z-index: 2147483647 !important;
@@ -22,40 +36,26 @@ body, html {
     width: 100vw;
     z-index: 9000 !important;
     pointer-events: auto !important;
-    background: #111;
+    /* 向日葵风格头部背景 */
+    background: linear-gradient(45deg, #2d230e, #5c4033);
+    border-bottom: 2px solid var(--vangogh-yellow);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-#homeButton { 
-    pointer-events: auto !important; 
-}
-
-.home-button {
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-}
-
-/* Critical loading styles to prevent FOUC */
+/* 梵高风格加载占位符 */
 .player-placeholder {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 16/9 !important;
-    background-color: #1f2937 !important;
+    background-color: var(--vangogh-dark-blue) !important;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(249, 215, 73, 0.05) 10px, rgba(249, 215, 73, 0.05) 20px),
+        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(30, 82, 142, 0.05) 10px, rgba(30, 82, 142, 0.05) 20px);
     position: relative !important;
     display: block !important;
     border-radius: 8px !important;
     overflow: hidden !important;
-}
-
-.player-loading-container {
-    width: 100% !important;
-    height: 0 !important;
-    padding-bottom: 56.25% !important;
-    position: relative !important;
-    background-color: #1f2937 !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    display: block !important;
+    border: 1px solid var(--vangogh-stroke);
 }
 
 .player-loading-overlay {
@@ -68,86 +68,75 @@ body, html {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    background-color: rgba(17, 24, 39, 0.7) !important;
+    background-color: rgba(11, 43, 91, 0.7) !important;
 }
 
+/* 梵高风格旋转加载动画 - 模仿星夜漩涡 */
 .player-loading-spinner {
     width: 48px !important;
     height: 48px !important;
-    border: 4px solid rgba(255, 255, 255, 0.1) !important;
+    border: 4px solid rgba(249, 215, 73, 0.2) !important;
     border-radius: 50% !important;
-    border-top-color: #f97316 !important;
+    border-top-color: var(--vangogh-yellow) !important;
+    border-right-color: var(--vangogh-blue) !important;
     position: relative !important;
     margin-bottom: 16px !important;
-    animation: spin 1s linear infinite !important;
+    animation: spin 1.5s linear infinite !important;
+    box-shadow: 0 0 15px rgba(249, 215, 73, 0.3);
 }
 
-/* Critical styles for loading text */
+/* 加载文字风格调整 */
 .player-loading-text,
 .player-loading-overlay div:nth-child(2),
 div.player-loading-text {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    color: #f9fafb !important;
+    color: var(--vangogh-yellow) !important;
     font-size: 16px !important;
     font-weight: 500 !important;
     margin-bottom: 8px !important;
     text-align: center !important;
-    font-family: system-ui, -apple-system, sans-serif !important;
+    font-family: Georgia, serif !important;
     line-height: 1.4 !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
     pointer-events: none !important;
     z-index: 100 !important;
     background: transparent !important;
     max-width: 90% !important;
 }
 
-@keyframes player-spinner-rotate {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* ArtPlayer specific styles */
-.art-video-player, .art-video-player video {
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 150px !important;
-    max-height: 100vh !important;
-    background: #000 !important;
-    object-fit: contain !important;
-    display: block !important;
-}
-
-/* Fix for Chrome-specific issues */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    .art-video-player video {
-        transform: translateZ(0) !important;
-        will-change: transform !important;
-    }
-
-    /* Force visibility of video element */
-    .art-video-player.art-playing video {
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-}
-
+/* 播放器容器添加梵高风格边框和纹理 */
 .player-container {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+    padding: 15px;
 }
 
 #player {
     width: 100%;
-    height: 60vh; /* 视频播放器高度 */
+    height: 60vh; /* 保留原有高度 */
+    border: 10px solid #2d230e;
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 
+                inset 0 0 10px rgba(249, 215, 73, 0.2);
+    position: relative;
 }
 
+/* 为播放器添加笔触效果边框 */
+#player::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid rgba(249, 215, 73, 0.3);
+    pointer-events: none;
+}
+
+/* 加载容器梵高风格 */
 .loading-container {
     position: absolute;
     top: 0;
@@ -157,7 +146,9 @@ div.player-loading-text {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(11, 43, 91, 0.85);
+    background-image: radial-gradient(circle, rgba(249, 215, 73, 0.1) 1px, transparent 2px);
+    background-size: 30px 30px;
     color: white;
     z-index: 100;
     flex-direction: column;
@@ -166,13 +157,16 @@ div.player-loading-text {
 .loading-spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid rgba(255, 255, 255, 0.3);
+    border: 4px solid rgba(241, 140, 49, 0.3);
     border-radius: 50%;
-    border-top-color: white;
-    animation: spin 1s ease-in-out infinite;
+    border-top-color: var(--vangogh-orange);
+    border-right-color: var(--vangogh-yellow);
+    animation: spin 1.2s ease-in-out infinite;
     margin-bottom: 10px;
+    box-shadow: 0 0 15px rgba(241, 140, 49, 0.3);
 }
 
+/* 错误容器风格 */
 .error-container {
     position: absolute;
     top: 0;
@@ -182,71 +176,61 @@ div.player-loading-text {
     display: none;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
+    background-color: rgba(92, 64, 51, 0.85);
+    color: var(--vangogh-yellow);
     z-index: 100;
     flex-direction: column;
     text-align: center;
     padding: 1rem;
+    font-family: Georgia, serif;
 }
 
 .error-icon {
     font-size: 48px;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.error-message-sub {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #aaa;
-}
-
+/* 集数按钮梵高风格 */
 .episode-active {
-    background-color: #3b82f6 !important;
-    border-color: #60a5fa !important;
+    background-color: var(--vangogh-orange) !important;
+    border-color: var(--vangogh-yellow) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .episode-grid {
     max-height: 30vh;
     overflow-y: auto;
+    background-color: rgba(11, 43, 91, 0.5);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--vangogh-stroke);
 }
 
-/* 恢复播放位置提示样式 */
+/* 恢复播放提示样式 - 梵高风格 */
 .position-restore-hint {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%) translateY(100%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    background-color: rgba(92, 64, 51, 0.9);
+    color: var(--vangogh-yellow);
     padding: 10px 20px;
     border-radius: 4px;
+    border: 1px solid rgba(249, 215, 73, 0.3);
     z-index: 1000;
     transition: transform 0.3s ease;
     font-size: 14px;
+    font-family: Georgia, serif;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.position-restore-hint.show {
-    transform: translateX(-50%) translateY(0);
-}
-
-.hint-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* 开关按钮梵高配色 */
 .switch {
     position: relative;
     display: inline-block;
     width: 46px;
     height: 24px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
 }
 
 .slider {
@@ -256,39 +240,24 @@ div.player-loading-text {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #333;
+    background-color: #5c4033;
     transition: .4s;
     border-radius: 24px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
+    border: 1px solid rgba(249, 215, 73, 0.3);
 }
 
 input:checked + .slider {
-    background-color: #00ccff;
+    background-color: var(--vangogh-orange);
 }
 
-input:checked + .slider:before {
-    transform: translateX(22px);
-}
-
-/* 添加快捷键提示样式 */
+/* 快捷键提示样式 */
 .shortcut-hint {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    background-color: rgba(92, 64, 51, 0.9);
+    color: var(--vangogh-yellow);
     padding: 1rem 2rem;
     border-radius: 0.5rem;
     font-size: 1.5rem;
@@ -298,92 +267,68 @@ input:checked + .slider:before {
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.3s ease;
+    border: 1px solid rgba(249, 215, 73, 0.3);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+    font-family: Georgia, serif;
 }
 
-.shortcut-hint.show {
-    opacity: 1;
-}
-
-/* 原生全屏时，播放器容器铺满 */
-.player-container:-webkit-full-screen,
-.player-container:fullscreen {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    z-index: 10000;
-    background-color: #000;
-}
-
-.player-container:-webkit-full-screen #player,
-.player-container:fullscreen #player {
-    width: 100%; height: 100%;
-}
-
-/* 资源信息卡片区 */
+/* 资源信息卡片区梵高风格 */
 #resourceInfoBarContainer {
     align-items: center;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    background-color: rgba(45, 35, 14, 0.7);
+    border: 1px solid rgba(249, 215, 73, 0.2);
+    padding: 8px 15px;
 }
 
 .resource-info-bar-left {
     align-items: center;
     font-size: 1.1rem;
     font-weight: bold;
-    color: #fff;
+    color: var(--vangogh-yellow);
     flex: 1;
-}
-
-.resource-info-bar-videos {
-    font-size: 1rem;
-    font-weight: normal;
-    margin-left: 10px;
-    color: #ccc;
+    font-family: Georgia, serif;
 }
 
 .resource-switch-btn {
     align-items: center;
-    background: none;
-    border: none;
-    color: #a67c2d;
+    background-color: rgba(241, 140, 49, 0.2);
+    border: 1px solid var(--vangogh-orange);
+    color: var(--vangogh-yellow);
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
     gap: 6px;
     padding: 6px 12px;
     border-radius: 0.5rem;
-    transition: background 0.2s;
+    transition: all 0.2s;
 }
 
 .resource-switch-btn:hover {
-    background: #f5e9d7;
-}
-
-.resource-switch-btn:active {
-    background: #f5e9d7;
+    background-color: rgba(241, 140, 49, 0.4);
+    transform: translateY(-2px);
 }
 
 .resource-switch-icon {
     width: 20px;
     height: 20px;
     margin-right: 0;
-    color: #a67c2d;
+    color: var(--vangogh-yellow);
     vertical-align: middle;
     transition: transform 0.3s;
 }
 
-/* 新增：移动端响应式样式 */
+/* 移动端响应式样式保持 */
 @media (max-width: 640px) {
     .episode-grid {
-        max-height: 40vh; /* 移动端增加集数列表高度 */
+        max-height: 40vh;
     }
 
-    /* 改进移动端按钮显示 */
     button {
         white-space: nowrap;
     }
 
-    /* 控制栏在小屏幕上可能需要换行 */
     .player-container .flex-wrap {
         margin-bottom: 4px;
     }
@@ -392,4 +337,10 @@ input:checked + .slider:before {
 /* 隐藏用户名输入框 */
 #username {
     display: none !important;
+}
+
+/* 保持原有动画但增强梵高风格 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
