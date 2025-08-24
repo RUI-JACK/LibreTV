@@ -54,17 +54,20 @@ LibreTV 全局样式
 }
 
 .page-bg {
-    background: linear-gradient(180deg, var(--page-gradient-start), var(--page-gradient-end));
+    /* 仅在页面整体背景应用梵高画作 */
+    background: linear-gradient(180deg, var(--page-gradient-start), var(--page-gradient-end)),
+                url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
     min-height: 100vh;
-    /* 柔和赛博点状背景 */
+    /* 保留原有的点状背景效果 */
     background-image: 
         linear-gradient(180deg, var(--page-gradient-start), var(--page-gradient-end)),
         radial-gradient(circle at 25px 25px, rgba(0, 204, 255, 0.04) 2px, transparent 3px),
         radial-gradient(circle at 75px 75px, rgba(255, 60, 120, 0.02) 1px, transparent 2px),
         radial-gradient(circle at 50px 50px, rgba(150, 255, 250, 0.015) 1px, transparent 2px),
-        url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
+        url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500');
     background-blend-mode: normal;
     background-size: cover, 100px 100px, 50px 50px, 75px 75px, cover;
+    background-attachment: fixed; /* 固定背景不随滚动移动 */
 }
 
 button, .card-hover {
@@ -74,7 +77,7 @@ button, .card-hover {
 /* 改进卡片适应不同内容长度 */
 .card-hover {
     border: 1px solid var(--border-color);
-    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end)), url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
+    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
@@ -138,7 +141,7 @@ button, .card-hover {
     scrollbar-color: #444 #222;
     transform: translateX(100%);
     transition: transform 0.3s ease;
-    background: linear-gradient(135deg, var(--page-gradient-end), var(--page-gradient-start)), url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
+    background: linear-gradient(135deg, var(--page-gradient-end), var(--page-gradient-start));
     border-left: 1px solid var(--primary-color);
 }
 
@@ -194,7 +197,7 @@ button, .card-hover {
 }
 
 .search-tag {
-    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end)), url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
+    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
     color: var(--text-color);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -204,7 +207,7 @@ button, .card-hover {
 }
 
 .search-tag:hover {
-    background: linear-gradient(135deg, var(--card-gradient-end), var(--card-gradient-start)), url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
+    background: linear-gradient(135deg, var(--card-gradient-end), var(--card-gradient-start));
     border-color: var(--primary-color);
 }
 
@@ -212,7 +215,7 @@ button, .card-hover {
     width: 100%;
     transition: all 0.3s ease;
     margin-top: auto;
-    background: linear-gradient(to bottom, transparent, var(--page-gradient-start)), url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
+    background: linear-gradient(to bottom, transparent, var(--page-gradient-start));
     border-top: 1px solid var(--border-color);
 }
 
@@ -282,7 +285,7 @@ body {
 }
 
 #modal > div {
-    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end)), url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
+    background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
     border: 1px solid var(--primary-color);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 204, 255, 0.1);
     border-radius: 8px;
@@ -641,7 +644,6 @@ body {
     width: 320px; /* 固定宽度 */
     box-sizing: border-box; /* 确保padding不影响总宽度 */
     scrollbar-gutter: stable; /* 现代浏览器：为滚动条预留空间 */
-    background: url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
 }
 
 .history-panel.show {
@@ -654,7 +656,7 @@ body {
 
 /* 历史记录项样式优化 */
 .history-item {
-    background: url('https://img1.baidu.com/it/u=3544671942,3505186063&fm=253&fmt=auto&app=138&f=JPEG?w=833&h=500') center/cover no-repeat;
+    background: #1a1a1a;
     border-radius: 6px; /* 减小圆角 */
     border: 1px solid #333;
     overflow: hidden;
@@ -923,3 +925,4 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     min-width: 200px;
     text-align: center;
+}
