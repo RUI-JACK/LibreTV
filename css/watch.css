@@ -1,14 +1,19 @@
-/* 添加重定向页面的基本样式 */
+/* 添加重定向页面的基本样式，融入梵高元素 */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f1622;
-    color: white;
+    /* 梵高《星月夜》背景色调 */
+    background-color: #1a0b19;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 200, 97, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(70, 116, 189, 0.1) 0%, transparent 40%);
+    color: #f8f1e9;
     margin: 0;
     padding: 0;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .redirect-container {
@@ -16,12 +21,29 @@ body {
     max-width: 90%;
     width: 380px;
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.3);
+    /* 模仿梵高画布质感 */
+    background-color: rgba(30, 15, 30, 0.6);
     border-radius: 16px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 0 2px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(217, 136, 128, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 画布纹理效果 */
+.redirect-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    pointer-events: none;
 }
 
 .logo-container {
@@ -34,66 +56,81 @@ body {
 .logo-icon {
     width: 40px;
     height: 40px;
-    color: #00ccff;
+    /* 梵高《向日葵》黄色调 */
+    color: #f2c85b;
     margin-right: 10px;
+    filter: drop-shadow(0 0 2px rgba(242, 200, 91, 0.5));
 }
 
 .logo-text {
     font-size: 2rem;
     margin: 0;
-    background: linear-gradient(to right, #00ccff, #ff3c78);
+    /* 梵高标志性色彩渐变 - 向日葵黄到鸢尾花紫 */
+    background: linear-gradient(to right, #f2c85b, #8a5cf7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-shadow: 0 0 8px rgba(242, 200, 91, 0.2);
 }
 
 .loading-animation {
     display: inline-block;
     width: 50px;
     height: 50px;
-    border: 3px solid rgba(255, 255, 255, 0.2);
+    border: 3px solid rgba(217, 136, 128, 0.2);
     border-radius: 50%;
-    border-top-color: #00ccff;
-    animation: spin 1s linear infinite;
+    /* 梵高《自画像》中的红色调 */
+    border-top-color: #d98880;
+    animation: spin 1.2s ease-in-out infinite;
     margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(217, 136, 128, 0.15);
 }
 
+/* 模仿星月夜的旋转效果 */
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.05); }
+    100% { transform: rotate(360deg) scale(1); }
 }
 
 .redirect-message {
     font-size: 1.2rem;
     margin-bottom: 10px;
     font-weight: 500;
+    color: #f1d6b8;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 #redirect-status {
     font-size: 0.9rem;
-    color: #8599b2;
+    /* 麦田色调 */
+    color: #e0a85e;
     margin-bottom: 1.5rem;
     height: 20px;
 }
 
 .redirect-hint {
     font-size: 0.9rem;
-    color: #8599b2;
+    color: #d1c8b7;
     margin-top: 20px;
 }
 
 .redirect-hint a {
-    color: #00ccff;
+    /* 鸢尾花蓝色 */
+    color: #6190e8;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
     padding: 5px 10px;
     border-radius: 4px;
-    background-color: rgba(0, 204, 255, 0.1);
+    background-color: rgba(97, 144, 232, 0.1);
+    border: 1px solid rgba(97, 144, 232, 0.2);
 }
 
 .redirect-hint a:hover {
-    background-color: rgba(0, 204, 255, 0.2);
+    background-color: rgba(97, 144, 232, 0.2);
     text-decoration: underline;
+    box-shadow: 0 0 8px rgba(97, 144, 232, 0.3);
 }
 
 /* 移动端优化 */
