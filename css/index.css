@@ -1,29 +1,46 @@
-/* 主页特定样式 */
+/* 主页特定样式 - 梵高风格修改版 */
+
+/* 梵高风格配色系统 */
+:root {
+    --vangogh-yellow: #F9E076; /* 向日葵黄 */
+    --vangogh-blue: #1E3A8A;   /* 星空蓝 */
+    --vangogh-purple: #6B21A8; /* 鸢尾紫 */
+    --vangogh-gold: #EAB308;   /* 麦田金 */
+    --vangogh-green: #166534;  /* 树叶绿 */
+    --brush-stroke: 1px solid rgba(255,255,255,0.15); /* 笔触边框效果 */
+}
 
 /* 历史记录和设置按钮定位样式 */
 .top-corner-button {
     position: fixed;
     z-index: 10;
-    background: #222;
-    border: 1px solid #333;
+    background: linear-gradient(135deg, #222, #333);
+    border: var(--brush-stroke);
     border-radius: 0.5rem;
     padding: 0.375rem 0.75rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .top-corner-button:hover {
-    background: #333;
-    border-color: white;
+    background: linear-gradient(135deg, #333, #444);
+    border-color: var(--vangogh-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 224, 118, 0.15);
 }
 
 /* 搜索区域样式 */
 .search-box {
     height: 3.5rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(30, 58, 138, 0.2);
     border-radius: 0.5rem;
     overflow: hidden;
     display: flex;
     align-items: stretch;
+    background-image: 
+        linear-gradient(transparent 50%, rgba(249, 224, 118, 0.03) 50%),
+        linear-gradient(90deg, transparent 50%, rgba(30, 58, 138, 0.02) 50%);
+    background-size: 20px 20px;
 }
 
 .search-button {
@@ -31,30 +48,52 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: white;
-    color: black;
+    background: linear-gradient(45deg, var(--vangogh-yellow), var(--vangogh-gold));
+    color: #222;
     font-weight: 500;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.search-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    transform: rotate(30deg);
+    animation: brush-stroke 8s infinite linear;
+}
+
+@keyframes brush-stroke {
+    0% { transform: rotate(0deg) translate(-50%, -50%); }
+    100% { transform: rotate(360deg) translate(-50%, -50%); }
 }
 
 .search-button:hover {
-    background: #f0f0f0;
+    background: linear-gradient(45deg, #FFE87C, #F5C313);
+    box-shadow: 0 0 10px rgba(249, 224, 118, 0.3);
 }
 
 .search-input {
     flex: 1;
     background: #111;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
+    border-top: var(--brush-stroke);
+    border-bottom: var(--brush-stroke);
     color: white;
     padding: 0 1.5rem;
     font-size: 1rem;
     outline: none;
-    transition: background-color 0.2s;
+    transition: all 0.3s ease;
 }
 
 .search-input:focus {
     background: #191919;
+    border-color: rgba(249, 224, 118, 0.3);
+    box-shadow: inset 0 0 8px rgba(30, 58, 138, 0.1);
 }
 
 /* 最近搜索记录样式 */
@@ -62,17 +101,35 @@
     display: inline-block;
     padding: 0.25rem 0.75rem;
     margin: 0.25rem;
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(107, 33, 168, 0.05));
+    border: var(--brush-stroke);
     border-radius: 0.5rem;
     color: #e5e7eb;
     font-size: 0.875rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.recent-search-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(249, 224, 118, 0.1), transparent);
+    transition: left 0.6s ease;
 }
 
 .recent-search-tag:hover {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(107, 33, 168, 0.1));
+    border-color: rgba(249, 224, 118, 0.3);
+    transform: translateY(-1px);
+}
+
+.recent-search-tag:hover::before {
+    left: 100%;
 }
 
 /* 豆瓣区域样式 */
@@ -80,6 +137,18 @@
     margin: 2rem auto;
     max-width: 1280px;
     padding: 0 0.5rem;
+    position: relative;
+}
+
+.douban-container::before {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--vangogh-yellow), transparent);
+    opacity: 0.3;
 }
 
 .douban-header {
@@ -92,20 +161,23 @@
 .douban-toggle {
     display: flex;
     align-items: center;
-    background: #222;
+    background: linear-gradient(135deg, #222, #333);
     border-radius: 9999px;
     padding: 0.25rem;
+    border: var(--brush-stroke);
 }
 
 .douban-toggle-button {
     padding: 0.25rem 0.75rem;
     font-size: 0.875rem;
     border-radius: 9999px;
+    transition: all 0.3s ease;
 }
 
 .douban-toggle-button.active {
-    background: #db2777;
+    background: linear-gradient(45deg, var(--vangogh-purple), var(--vangogh-blue));
     color: white;
+    box-shadow: 0 0 8px rgba(107, 33, 168, 0.3);
 }
 
 .douban-toggle-button:not(.active) {
@@ -113,22 +185,27 @@
 }
 
 .douban-toggle-button:not(.active):hover {
-    color: white;
+    color: var(--vangogh-yellow);
+    background: rgba(255,255,255,0.05);
 }
 
 .douban-refresh-button {
     font-size: 0.875rem;
     padding: 0.25rem 0.75rem;
-    background: #db2777;
+    background: linear-gradient(45deg, var(--vangogh-purple), var(--vangogh-blue));
     color: white;
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.25rem;
+    transition: all 0.3s ease;
+    border: var(--brush-stroke);
 }
 
 .douban-refresh-button:hover {
-    background: #be185d;
+    background: linear-gradient(45deg, #7E22CE, #2563EB);
+    box-shadow: 0 0 10px rgba(107, 33, 168, 0.2);
+    transform: translateY(-1px);
 }
 
 .douban-tags-container {
@@ -144,23 +221,25 @@
 
 .douban-tag {
     padding: 0.25rem 0.75rem;
-    background: rgba(219, 39, 119, 0.1);
-    border: 1px solid rgba(219, 39, 119, 0.2);
+    background: linear-gradient(135deg, rgba(107, 33, 168, 0.1), rgba(30, 58, 138, 0.05));
+    border: var(--brush-stroke);
     border-radius: 0.5rem;
     color: #f9a8d4;
     font-size: 0.875rem;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .douban-tag:hover {
-    background: rgba(219, 39, 119, 0.2);
-    border-color: rgba(219, 39, 119, 0.4);
+    background: linear-gradient(135deg, rgba(107, 33, 168, 0.2), rgba(30, 58, 138, 0.1));
+    border-color: rgba(249, 224, 118, 0.3);
+    color: var(--vangogh-yellow);
 }
 
 .douban-tag.active {
-    background: #db2777;
-    border-color: #db2777;
+    background: linear-gradient(45deg, var(--vangogh-purple), var(--vangogh-blue));
+    border-color: rgba(249, 224, 118, 0.5);
     color: white;
+    box-shadow: 0 0 8px rgba(107, 33, 168, 0.2);
 }
 
 /* 搜索结果样式 */
@@ -176,6 +255,8 @@
     font-size: 0.875rem;
     color: #9ca3af;
     margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: var(--brush-stroke);
 }
 
 /* 响应式网格布局 */
