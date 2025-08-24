@@ -1,46 +1,45 @@
-/* 主页特定样式 - 梵高风格修改版 */
+/* 主页特定样式 - 梵高风格改造 */
 
-/* 梵高风格配色系统 */
+/* 定义梵高风格核心颜色变量 */
 :root {
-    --vangogh-yellow: #F9E076; /* 向日葵黄 */
-    --vangogh-blue: #1E3A8A;   /* 星空蓝 */
-    --vangogh-purple: #6B21A8; /* 鸢尾紫 */
-    --vangogh-gold: #EAB308;   /* 麦田金 */
-    --vangogh-green: #166534;  /* 树叶绿 */
-    --brush-stroke: 1px solid rgba(255,255,255,0.15); /* 笔触边框效果 */
+    --vangogh-yellow: #F9D749;
+    --vangogh-orange: #F18C31;
+    --vangogh-blue: #0B2B5B;
+    --vangogh-dark-blue: #071C41;
+    --vangogh-brown: #5C4033;
+    --vangogh-stroke: #3A2E1F;
+    --vangogh-canvas: #2D230E;
 }
 
 /* 历史记录和设置按钮定位样式 */
 .top-corner-button {
     position: fixed;
     z-index: 10;
-    background: linear-gradient(135deg, #222, #333);
-    border: var(--brush-stroke);
+    background: var(--vangogh-canvas);
+    border: 1px solid var(--vangogh-stroke);
     border-radius: 0.5rem;
     padding: 0.375rem 0.75rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .top-corner-button:hover {
-    background: linear-gradient(135deg, #333, #444);
+    background: var(--vangogh-brown);
     border-color: var(--vangogh-yellow);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(249, 224, 118, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* 搜索区域样式 */
 .search-box {
     height: 3.5rem;
-    box-shadow: 0 0 20px rgba(30, 58, 138, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3), 0 0 5px rgba(249, 215, 73, 0.2);
     border-radius: 0.5rem;
     overflow: hidden;
     display: flex;
     align-items: stretch;
-    background-image: 
-        linear-gradient(transparent 50%, rgba(249, 224, 118, 0.03) 50%),
-        linear-gradient(90deg, transparent 50%, rgba(30, 58, 138, 0.02) 50%);
-    background-size: 20px 20px;
+    background-color: var(--vangogh-dark-blue);
+    background-image: radial-gradient(circle at 10% 20%, rgba(249, 215, 73, 0.1) 1px, transparent 2px);
 }
 
 .search-button {
@@ -48,52 +47,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(45deg, var(--vangogh-yellow), var(--vangogh-gold));
-    color: #222;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.search-button::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-    transform: rotate(30deg);
-    animation: brush-stroke 8s infinite linear;
-}
-
-@keyframes brush-stroke {
-    0% { transform: rotate(0deg) translate(-50%, -50%); }
-    100% { transform: rotate(360deg) translate(-50%, -50%); }
+    background: linear-gradient(45deg, var(--vangogh-orange), var(--vangogh-yellow));
+    color: #000;
+    font-weight: 600;
+    font-family: Georgia, serif;
+    transition: all 0.3s;
+    border: 1px solid var(--vangogh-stroke);
 }
 
 .search-button:hover {
-    background: linear-gradient(45deg, #FFE87C, #F5C313);
-    box-shadow: 0 0 10px rgba(249, 224, 118, 0.3);
+    background: linear-gradient(45deg, #e07b20, #e6c030);
+    transform: scale(1.05);
 }
 
 .search-input {
     flex: 1;
-    background: #111;
-    border-top: var(--brush-stroke);
-    border-bottom: var(--brush-stroke);
-    color: white;
+    background: rgba(14, 38, 77, 0.7);
+    border-top: 1px solid var(--vangogh-stroke);
+    border-bottom: 1px solid var(--vangogh-stroke);
+    color: var(--vangogh-yellow);
     padding: 0 1.5rem;
     font-size: 1rem;
     outline: none;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
+    font-family: Georgia, serif;
 }
 
 .search-input:focus {
-    background: #191919;
-    border-color: rgba(249, 224, 118, 0.3);
-    box-shadow: inset 0 0 8px rgba(30, 58, 138, 0.1);
+    background: rgba(14, 38, 77, 0.9);
+    border-color: var(--vangogh-orange);
+    box-shadow: 0 0 5px rgba(241, 140, 49, 0.3) inset;
 }
 
 /* 最近搜索记录样式 */
@@ -101,35 +84,19 @@
     display: inline-block;
     padding: 0.25rem 0.75rem;
     margin: 0.25rem;
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(107, 33, 168, 0.05));
-    border: var(--brush-stroke);
+    background: rgba(249, 215, 73, 0.1);
+    border: 1px solid rgba(249, 215, 73, 0.2);
     border-radius: 0.5rem;
-    color: #e5e7eb;
+    color: var(--vangogh-yellow);
     font-size: 0.875rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.recent-search-tag::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(249, 224, 118, 0.1), transparent);
-    transition: left 0.6s ease;
+    transition: all 0.3s;
+    font-family: Georgia, serif;
 }
 
 .recent-search-tag:hover {
-    background: linear-gradient(135deg, rgba(30, 58, 138, 0.2), rgba(107, 33, 168, 0.1));
-    border-color: rgba(249, 224, 118, 0.3);
-    transform: translateY(-1px);
-}
-
-.recent-search-tag:hover::before {
-    left: 100%;
+    background: rgba(249, 215, 73, 0.2);
+    border-color: var(--vangogh-yellow);
+    transform: translateY(-2px);
 }
 
 /* 豆瓣区域样式 */
@@ -137,18 +104,10 @@
     margin: 2rem auto;
     max-width: 1280px;
     padding: 0 0.5rem;
-    position: relative;
-}
-
-.douban-container::before {
-    content: '';
-    position: absolute;
-    top: -1rem;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--vangogh-yellow), transparent);
-    opacity: 0.3;
+    background-color: rgba(45, 35, 14, 0.3);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .douban-header {
@@ -156,56 +115,60 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(249, 215, 73, 0.2);
 }
 
 .douban-toggle {
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #222, #333);
+    background: var(--vangogh-canvas);
+    border: 1px solid var(--vangogh-stroke);
     border-radius: 9999px;
     padding: 0.25rem;
-    border: var(--brush-stroke);
 }
 
 .douban-toggle-button {
     padding: 0.25rem 0.75rem;
     font-size: 0.875rem;
     border-radius: 9999px;
-    transition: all 0.3s ease;
+    font-family: Georgia, serif;
+    transition: all 0.3s;
 }
 
 .douban-toggle-button.active {
-    background: linear-gradient(45deg, var(--vangogh-purple), var(--vangogh-blue));
-    color: white;
-    box-shadow: 0 0 8px rgba(107, 33, 168, 0.3);
+    background: linear-gradient(45deg, var(--vangogh-orange), var(--vangogh-yellow));
+    color: #000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .douban-toggle-button:not(.active) {
-    color: #9ca3af;
+    color: #d4c5a1;
 }
 
 .douban-toggle-button:not(.active):hover {
     color: var(--vangogh-yellow);
-    background: rgba(255,255,255,0.05);
+    background: rgba(249, 215, 73, 0.1);
 }
 
 .douban-refresh-button {
     font-size: 0.875rem;
     padding: 0.25rem 0.75rem;
-    background: linear-gradient(45deg, var(--vangogh-purple), var(--vangogh-blue));
-    color: white;
+    background: linear-gradient(45deg, var(--vangogh-orange), var(--vangogh-yellow));
+    color: #000;
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    transition: all 0.3s ease;
-    border: var(--brush-stroke);
+    border: 1px solid var(--vangogh-stroke);
+    transition: all 0.3s;
+    font-family: Georgia, serif;
 }
 
 .douban-refresh-button:hover {
-    background: linear-gradient(45deg, #7E22CE, #2563EB);
-    box-shadow: 0 0 10px rgba(107, 33, 168, 0.2);
-    transform: translateY(-1px);
+    background: linear-gradient(45deg, #e07b20, #e6c030);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .douban-tags-container {
@@ -221,25 +184,26 @@
 
 .douban-tag {
     padding: 0.25rem 0.75rem;
-    background: linear-gradient(135deg, rgba(107, 33, 168, 0.1), rgba(30, 58, 138, 0.05));
-    border: var(--brush-stroke);
+    background: rgba(249, 215, 73, 0.1);
+    border: 1px solid rgba(249, 215, 73, 0.2);
     border-radius: 0.5rem;
-    color: #f9a8d4;
+    color: var(--vangogh-yellow);
     font-size: 0.875rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
+    font-family: Georgia, serif;
 }
 
 .douban-tag:hover {
-    background: linear-gradient(135deg, rgba(107, 33, 168, 0.2), rgba(30, 58, 138, 0.1));
-    border-color: rgba(249, 224, 118, 0.3);
-    color: var(--vangogh-yellow);
+    background: rgba(249, 215, 73, 0.2);
+    border-color: var(--vangogh-yellow);
+    transform: translateY(-2px);
 }
 
 .douban-tag.active {
-    background: linear-gradient(45deg, var(--vangogh-purple), var(--vangogh-blue));
-    border-color: rgba(249, 224, 118, 0.5);
-    color: white;
-    box-shadow: 0 0 8px rgba(107, 33, 168, 0.2);
+    background: var(--vangogh-orange);
+    border-color: var(--vangogh-orange);
+    color: #000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* 搜索结果样式 */
@@ -253,16 +217,15 @@
 .search-result-stats {
     text-align: right;
     font-size: 0.875rem;
-    color: #9ca3af;
+    color: var(--vangogh-yellow);
     margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: var(--brush-stroke);
+    font-family: Georgia, serif;
 }
 
 /* 响应式网格布局 */
 .search-results-grid {
     display: grid;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 @media (max-width: 640px) {
@@ -287,4 +250,13 @@
     .search-results-grid {
         grid-template-columns: repeat(4, 1fr);
     }
+}
+
+/* 添加梵高风格背景纹理 */
+body {
+    background-color: var(--vangogh-blue);
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(249, 215, 73, 0.1) 1px, transparent 3px),
+        radial-gradient(circle at 80% 70%, rgba(30, 82, 142, 0.15) 2px, transparent 4px);
+    background-attachment: fixed;
 }
